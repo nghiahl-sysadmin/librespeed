@@ -19,7 +19,7 @@ jobs:
       - name: Build an image from Dockerfile
         id: step_two
         run: |
-          docker build -t ${{ env.IMAGE }} ./project/.
+          docker build -t ${{ env.IMAGE }} ./.
           
       - name: Run Trivy vulnerability scanner
         id: step_three
