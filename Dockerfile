@@ -36,6 +36,7 @@ RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     -subj "/C=VN/ST=Asia/L=Ho Chi Minh/O=FPT Telecom/CN=speedtest.fpt.vn"
 
 # Update Apache configuration
+COPY docker/apache2.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/apache2-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 # Enable Apache SSL module and configure HTTPS
