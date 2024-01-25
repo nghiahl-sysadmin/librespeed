@@ -39,5 +39,5 @@ ENV REDACT_IP_ADDRESSES=false
 ENV WEBPORT=80
 
 # Final touches
-EXPOSE 80 443
+EXPOSE 80
 CMD ["bash", "/entrypoint.sh"]
