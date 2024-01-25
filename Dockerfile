@@ -29,7 +29,7 @@ COPY favicon.ico /speedtest/
 COPY docker/servers.json /servers.json
 
 COPY docker/*.php /speedtest/
-COPY docker/entrypoint.sh /
+COPY docker/docker-entrypoint.sh /
 
 # Prepare default environment variables
 ENV TITLE=LibreSpeed
@@ -41,4 +41,4 @@ ENV REDACT_IP_ADDRESSES=false
 ENV WEBPORT=80
 
 # Final touches
-CMD ["bash", "/entrypoint.sh"]
+CMD ["bash", "/docker-entrypoint.sh"]
