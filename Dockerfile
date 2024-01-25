@@ -33,7 +33,7 @@ COPY docker/entrypoint.sh /
 RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     -keyout /etc/ssl/private/apache-selfsigned.key \
     -out /etc/ssl/certs/apache-selfsigned.crt \
-    -subj "/C=VN/ST=Asia/L=Ho Chi Minh/O=FPT Telecom/CN=speedtest.fpt.vn"
+    -subj "/C=VN/ST=Asia/CN=Librespeed"
 
 # Update Apache configuration
 COPY docker/apache2.conf /etc/apache2/sites-available/000-default.conf
