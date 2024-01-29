@@ -29,19 +29,19 @@ COPY docker/servers.json /servers.json
 COPY docker/*.php /speedtest/
 COPY docker/entrypoint.sh /
 
-# # Install SSL certificate (self-signed)
-# RUN openssl req -x509 -nodes -days 36500 -newkey rsa:2048 \
-#     -keyout /etc/ssl/private/apache-selfsigned.key \
-#     -out /etc/ssl/certs/apache-selfsigned.crt \
-#     -subj "/C=VN/ST=Asia/CN=Librespeed"
+# Install SSL certificate (self-signed)
+RUN openssl req -x509 -nodes -days 36500 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/apache-selfsigned.key \
+    -out /etc/ssl/certs/apache-selfsigned.crt \
+    -subj "/C=VN/ST=Asia/CN=Librespeed"
 
-# # Update Apache configuration
-# COPY docker/apache2-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-# COPY docker/apache2.conf /etc/apache2/sites-available/000-default.conf
+# Update Apache configuration
+COPY docker/apache2-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY docker/apache2.conf /etc/apache2/sites-available/000-default.conf
 
-# # Enable Apache SSL and Redirect module
-# RUN a2enmod ssl && a2enmod rewrite
-# RUN a2ensite default-ssl.conf
+# Enable Apache SSL and Redirect module
+RUN a2enmod ssl && a2enmod rewrite
+RUN a2ensite default-ssl.conf
 
 # Prepare default environment variables
 ENV TITLE=LibreSpeed
