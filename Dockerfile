@@ -50,7 +50,7 @@ ENV PASSWORD=password
 ENV TELEMETRY=false
 ENV ENABLE_ID_OBFUSCATION=false
 ENV REDACT_IP_ADDRESSES=false
-ENV WEBPORT=443
+ENV WEBPORT=80
 
 # Final touches
 CMD ["bash", "/entrypoint.sh"]
