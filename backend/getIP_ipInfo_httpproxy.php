@@ -1,6 +1,6 @@
 <?php
-$IPINFO_PROXYADDRESS = ''; // leave proxy address blank for direct
-$IPINFO_PROXYPORT = '3128';
+$IPINFO_PROXYADDRESS=''; // leave proxy address blank for direct
+$IPINFO_PROXYPORT='';
 
 $streamContext = array(
     'ssl' => array(
