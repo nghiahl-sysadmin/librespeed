@@ -78,7 +78,10 @@ function getIpInfoTokenString()
 
     return '?token=' . $IPINFO_APIKEY;
 }
-
+$httpproxyFile="getIP_ipInfo_httpproxy.php";
+if (!file_exists($httpproxyFile)) return "";
+require $httpproxyFile;
+if (empty($IPINFO_PROXYADDRESS)) $IPINFO_HTTPPROXY = $NULL;
 /**
  * @param string $ip
  *
@@ -86,7 +89,8 @@ function getIpInfoTokenString()
  */
 function getIspInfo($ip)
 {
-    $json = file_get_contents('https://ipinfo.io/' . $ip . '/json' . getIpInfoTokenString());
+    // $json = file_get_contents('https://ipinfo.io/' . $ip . '/json' . getIpInfoTokenString());
+    $json = file_get_contents("https://ipinfo.io/" . $ip . "/json".getIpInfoTokenString(), False, $IPINFO_HTTPPROXY);
     if (!is_string($json)) {
         return null;
     }
@@ -209,7 +213,8 @@ function getServerLocation()
         return $serverLoc;
     }
 
-    $json = file_get_contents('https://ipinfo.io/json' . getIpInfoTokenString());
+    // $json = file_get_contents('https://ipinfo.io/json' . getIpInfoTokenString());
+    $json = file_get_contents("https://ipinfo.io/json".getIpInfoTokenString(), False, $IPINFO_HTTPPROXY);
     if (!is_string($json)) {
         return null;
     }
